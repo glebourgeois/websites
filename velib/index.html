@@ -22,23 +22,26 @@
   <body>
     <div class="container" ng-controller="VelibCtrl">
       <a href="#" ng-click="refresh(true)" class="btn btn-large btn-primary">Forcer mise à jour</a>
-      <div class="station" ng-repeat="station in stations">
-          <h2 class="muted">{{station.address}}</h2>
-          <table>
-            <tbody>
-                <tr>
-                    <td>V&#233;los</td>
-                    <td>Mise à jour</td>
-                    <td>Emplacements</td>
-                </tr>
-                <tr>
-                    <td><span class="badge" ng-class="{'badge-important': station.available == 0, 'badge-warning': station.available > 0 && station.available < 5, 'badge-success': station.available >= 5}">{{station.available}}</span></td>
-                    <td><span class="date {{station.class}}" id="date_{{station.id}}">{{station.date | date:'HH:mm'}}</span><span class="wait" id="wait_{{station.id}}"><img src="./resources/img/wait.gif" width="60" height="60" /></span></td>
-                    <td><span class="badge" ng-class="{'badge-important': station.free == 0, 'badge-warning': station.free > 0 && station.free < 5, 'badge-success': station.free >= 5}">{{station.free}}</span></td>
-                </tr>
-            </tbody>
-          </table>
-      </div>
+        <div class="group" ng-repeat="group in groups">
+            <h2 class="muted"><span class="label label-inverse">{{group.name}}</span></h2>
+            <div class="station" ng-repeat="station in group.stations">
+                <h3 class="muted">{{station.address}}</h3>
+                <table>
+                  <tbody>
+                      <tr>
+                          <td>V&#233;los</td>
+                          <td>&nbsp;</td>
+                          <td>Emplacements</td>
+                      </tr>
+                      <tr>
+                          <td><span class="badge" ng-class="{'badge-important': station.available == 0, 'badge-warning': station.available > 0 && station.available < 5, 'badge-success': station.available >= 5}">{{station.available}}</span></td>
+                          <td><span class="date {{station.class}}" id="date_{{station.id}}">{{station.date | date:'HH:mm'}}</span><span class="wait" id="wait_{{station.id}}"><img src="./resources/img/wait.gif" width="60" height="60" /></span></td>
+                          <td><span class="badge" ng-class="{'badge-important': station.free == 0, 'badge-warning': station.free > 0 && station.free < 5, 'badge-success': station.free >= 5}">{{station.free}}</span></td>
+                      </tr>
+                  </tbody>
+                </table>
+            </div>
+        </div>
       <p><a href="mailto:thomas@dudouet.fr">thomas@dudouet.fr</a> &copy; 2013</p>
     </div>
   </body>
