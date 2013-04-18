@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app>
+  <head>
+    <meta charset="utf-8" />
+    <title>&#201;tat des stations v&#233;lib</title>
+    <!-- Style -->
+    <link href="./resources/js/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="./resources/css/style.css" rel="stylesheet" />
+    <!-- Responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./resources/js/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <!-- Scripts -->
+    <script src="./resources/js/angular/angular.min.js"> </script>
+    <script src="./resources/js/jquery/jquery.min.js"> </script>
+    <script src="./resources/js/scripts.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"> </script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container" ng-controller="VelibCtrl">
+      <a href="#" ng-click="refresh(true)" class="btn btn-large btn-primary">Forcer mise à jour</a>
+      <div class="station" ng-repeat="station in stations">
+          <h2 class="muted">{{station.address}}</h2>
+          <table>
+            <tbody>
+                <tr>
+                    <td>V&#233;los</td>
+                    <td>Mise à jour</td>
+                    <td>Emplacements</td>
+                </tr>
+                <tr>
+                    <td><span class="badge" ng-class="{'badge-important': station.available == 0, 'badge-warning': station.available > 0 && station.available < 5, 'badge-success': station.available >= 5}">{{station.available}}</span></td>
+                    <td><span class="date {{station.class}}" id="date_{{station.id}}">{{station.date | date:'HH:mm'}}</span><span class="wait" id="wait_{{station.id}}"><img src="./resources/img/wait.gif" width="60" height="60" /></span></td>
+                    <td><span class="badge" ng-class="{'badge-important': station.free == 0, 'badge-warning': station.free > 0 && station.free < 5, 'badge-success': station.free >= 5}">{{station.free}}</span></td>
+                </tr>
+            </tbody>
+          </table>
+      </div>
+      <p><a href="mailto:thomas@dudouet.fr">thomas@dudouet.fr</a> &copy; 2013</p>
+    </div>
+  </body>
+</html>

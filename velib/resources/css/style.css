@@ -1,0 +1,46 @@
+.container {
+    padding-top: 30px;
+    text-align: center;
+}
+
+span.badge, span.date {
+    padding: 20px;
+    font-size: 24pt;
+}
+
+tr.caption {
+    font-weight: bold;
+    color: #333333;
+}
+
+.station {
+    margin: 30px 0px;
+}
+
+.station table {
+    margin: 0px auto;
+    width: 50%;
+}
+
+.station td:nth-child(1) {
+    width: 33%;
+    text-align: center;
+}
+
+.station td:nth-child(2) {
+    width: 34%;
+    text-align: center;
+}
+
+.station td:nth-child(3) {
+    width: 33%;
+    text-align: center;
+}
+
+.date {
+    display: none;
+}
+
+.error {
+    color: #B94A48
+}
