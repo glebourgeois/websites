@@ -2,13 +2,21 @@
     text-align: center;
 }
 
-a.btn {
-    margin: 30px 0px 50px 0px;
+p.lead {
+    font-size: 12pt;
 }
 
-span.label, span.badge, span.date {
+a.btn {
+    margin: 0px;
+}
+
+a.btn, span.badge, span.date {
     padding: 20px;
     font-size: 24pt;
+}
+
+span.update {
+    font-size: 12pt;
 }
 
 h3 {
