@@ -5,6 +5,7 @@ var station_ids = [ 10042 ];
 function VelibCtrl($scope, $http) {
 
     // List of the available stations
+    // Full list available here : http://www.velib.paris.fr/service/carto
     $scope.groups = [
         {
             name: "Data Publica",
