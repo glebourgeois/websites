@@ -11,7 +11,6 @@
     <link href="./resources/js/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" />
     <!-- Scripts -->
     <script src="./resources/js/angular/angular.min.js"> </script>
-    <script src="./resources/js/jquery/jquery.min.js"> </script>
     <script src="./resources/js/scripts.js"> </script>
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="./resources/img/velib.png">
@@ -35,7 +34,7 @@
                       </tr>
                       <tr>
                           <td><span class="badge" ng-class="{'badge-important': station.available == 0, 'badge-warning': station.available > 0 && station.available < 5, 'badge-success': station.available >= 5}">{{station.available}}</span></td>
-                          <td><span class="date {{station.class}}" group="{{group.name}}" id="date_{{station.id}}">{{station.date | date:'HH:mm'}}</span><span class="wait" id="wait_{{station.id}}"><img src="./resources/img/wait.gif" width="60" height="60" /></span></td>
+                          <td><span class="date {{station.class}}" group="{{group.name}}" id="date_{{station.id}}" ng-show="!station.fetching">{{station.date | date:'HH:mm'}}</span><span class="wait" id="wait_{{station.id}}" ng-show="station.fetching"><img src="./resources/img/wait.gif" width="60" height="60" /></span></td>
                           <td><span class="badge" ng-class="{'badge-important': station.free == 0, 'badge-warning': station.free > 0 && station.free < 5, 'badge-success': station.free >= 5}">{{station.free}}</span></td>
                       </tr>
                   </tbody>

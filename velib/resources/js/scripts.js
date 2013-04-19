@@ -33,14 +33,12 @@ function VelibCtrl($scope, $http) {
             station.free = "X";
             station.date = "";
             station.class = "";
+            station.fetching = false;
         }
     }
 
     // Force data refresh
     $scope.refresh = function(group_id, force_refresh) {
-        // Hide dates and show wait imgs
-        $("#group_" + group_id + " .date").hide();
-        $("#group_" + group_id + " .wait").show();
         // For each group
         for(var i=0 ; i<$scope.groups.length ; i++) {
             // If this is the reached group
@@ -54,6 +52,8 @@ function VelibCtrl($scope, $http) {
                     if(force_refresh) {
                         url += "?timestamp=" + new Date().getTime();
                     }
+                    // Update the station status
+                    station.fetching = true;
                     // Call JSON data
                     $http.jsonp(url, {
                         cache: !force_refresh,
@@ -62,19 +62,16 @@ function VelibCtrl($scope, $http) {
                             "callback": "JSON_CALLBACK"
                         }
                     }).success(function(data, status, headers, config) {
-                        // Update data
+                        // Update station status
                         config.station.available = data.station.available["$"];
                         config.station.free = data.station.free["$"];
                         config.station.date = data.station.updated["$"] * 1000;
-                        // Show new date
                         config.station.class = "";
-                        $("#wait_" + config.station.id).hide();
-                        $("#date_" + config.station.id).show();
+                        config.station.fetching = false;
                     }).error(function(data, status, headers, config) {
-                        // Show old date with an error flag
+                        // Update station status
                         config.station.class = "error";
-                        $("#wait_" + config.station.id).hide();
-                        $("#date_" + config.station.id).show();
+                        config.station.fetching = false;
                     });
                 }
             }
