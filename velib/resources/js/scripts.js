@@ -1,6 +1,3 @@
-// Station ids
-var station_ids = [ 10042 ];
-
 // Velib controller
 function VelibCtrl($scope, $http) {
 
